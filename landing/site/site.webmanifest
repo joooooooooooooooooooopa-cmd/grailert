@@ -1,0 +1,10 @@
+{
+  "name": "Grailert",
+  "short_name": "Grailert",
+  "description": "Be first on the Vinted listing",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FBFAF7",
+  "theme_color": "#FBFAF7",
+  "icons": [{ "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

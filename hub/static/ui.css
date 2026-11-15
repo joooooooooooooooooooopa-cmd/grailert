@@ -1,0 +1,192 @@
+/* Пульт контента — тёмная консоль. Один экран, плотно, без украшательств,
+   немного жизни в цифрах и статусах. */
+
+:root{
+  --bg:#101216; --panel:#171a20; --panel2:#1d212a; --line:#262b35; --line2:#2e3440;
+  --ink:#e8eaee; --ink2:#aab1bc; --mut:#6d7581;
+  --hot:#e4572e; --ok:#4cb782; --warn:#d9a13f; --bad:#e0685c; --acc:#6ea8d8;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:14.5px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  -webkit-font-smoothing:antialiased}
+.mono,.num{font-family:ui-monospace,"SF Mono",Menlo,monospace;font-variant-numeric:tabular-nums}
+.muted{color:var(--mut);font-size:12.5px}
+.small{font-size:12px;max-width:70ch}
+
+.top{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;
+  padding:13px 22px;background:rgba(16,18,22,.92);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--line)}
+.brand{font-weight:700;font-size:16px;letter-spacing:.01em}
+.brand span{color:var(--mut);font-weight:400}
+.top-right{display:flex;align-items:center;gap:14px}
+
+.btn{font:inherit;font-size:13px;font-weight:600;color:var(--ink);
+  background:var(--panel2);border:1px solid var(--line2);border-radius:7px;
+  padding:8px 14px;cursor:pointer;transition:transform .1s,border-color .15s}
+.btn:hover{border-color:var(--mut)}
+.btn:active{transform:scale(.97)}
+.btn.hot{background:var(--hot);border-color:var(--hot);color:#fff}
+
+main{max-width:1180px;margin:0 auto;padding:22px 22px 80px;
+  display:flex;flex-direction:column;gap:26px}
+
+.product{background:var(--panel);border:1px solid var(--line);border-radius:12px;
+  padding:20px 20px 22px}
+.phead{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;flex-wrap:wrap}
+h2{margin:0;font-size:19px;letter-spacing:-.01em}
+h3{margin:0 0 10px;font-size:13.5px;font-weight:600}
+h3 .muted{font-weight:400;margin-left:6px}
+.chip{font-size:11px;letter-spacing:.06em;padding:2px 9px;border-radius:999px;
+  border:1px solid var(--line2);color:var(--ink2)}
+
+/* плитки метрик */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tile{background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+  padding:13px 15px;min-height:74px;animation:pop .25s ease both}
+@keyframes pop{from{opacity:0;transform:translateY(5px)}}
+.tile .v{font-size:23px;font-weight:600;letter-spacing:-.02em}
+.tile .k{font-size:12px;color:var(--mut);margin-top:3px}
+.tile.off .v{color:var(--mut);font-size:15px;font-weight:400}
+
+/* графики */
+.charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:10px;margin-top:10px}
+.chart{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:12px 15px}
+.chart .t{font-size:12px;color:var(--ink2);margin-bottom:6px;display:flex;justify-content:space-between}
+.chart svg{display:block;width:100%;height:52px}
+.spark{fill:none;stroke:var(--acc);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.spark-fill{fill:var(--acc);opacity:.12;stroke:none}
+.spark-dot{fill:var(--acc)}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:840px){.split{grid-template-columns:1fr}}
+.panel{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:14px 15px;overflow-x:auto}
+
+.tbl{width:100%;border-collapse:collapse;font-size:13px}
+.tbl th{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--mut);
+  text-align:left;padding:6px 9px;border-bottom:1px solid var(--line2);white-space:nowrap}
+.tbl td{padding:7px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td.num{text-align:right;white-space:nowrap}
+.tbl.wide{min-width:640px}
+.empty{color:var(--mut);font-size:13px;padding:6px 2px}
+
+/* очередь */
+.addform{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.addform select,.addform input{font:inherit;font-size:13.5px;color:var(--ink);
+  background:var(--panel2);border:1px solid var(--line2);border-radius:7px;padding:8px 11px}
+.addform input{flex:1;min-width:220px}
+.st{font-size:11px;font-weight:600;letter-spacing:.05em;padding:2px 9px;border-radius:999px}
+.st-made{background:rgba(217,161,63,.14);color:var(--warn)}
+.st-scheduled{background:rgba(110,168,216,.14);color:var(--acc)}
+.st-published{background:rgba(76,183,130,.15);color:var(--ok)}
+.stbtn{font-size:11.5px;padding:4px 9px;margin-left:5px}
+
+/* источники данных */
+.pulls{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}
+.pull{display:flex;align-items:center;gap:9px;background:var(--panel2);
+  border:1px solid var(--line);border-radius:8px;padding:10px 13px;font-size:13px}
+.dot{width:8px;height:8px;border-radius:50%;flex:none}
+.dot.ok{background:var(--ok)} .dot.bad{background:var(--bad)} .dot.off{background:var(--mut)}
+.pull .who{flex:1}
+.pull .when{color:var(--mut);font-size:11.5px;white-space:nowrap}
+
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+
+/* --- v2: карточки очереди --- */
+#queue-list{display:flex;flex-direction:column;gap:12px}
+.ccard{display:grid;grid-template-columns:180px 1fr;gap:16px;background:var(--panel2);
+  border:1px solid var(--line);border-radius:10px;padding:14px;animation:pop .2s ease both}
+@media(max-width:640px){.ccard{grid-template-columns:1fr}}
+.cmedia video,.cmedia img{width:100%;border-radius:8px;background:#000;display:block;max-height:320px;object-fit:contain}
+.nofile{display:grid;place-items:center;height:110px;border:1px dashed var(--line2);
+  border-radius:8px;color:var(--mut);font-size:12.5px}
+.crow1{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap}
+.ctitle{font-weight:600;font-size:15px;margin-bottom:4px}
+.cmusic{color:var(--acc);font-size:12.5px;margin-bottom:4px}
+.ccaption{color:var(--ink2);font-size:13px;white-space:pre-wrap;max-height:96px;overflow:auto;
+  border-left:2px solid var(--line2);padding-left:10px;margin:6px 0}
+.cactions{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px}
+.stbtn.danger{color:var(--bad)}
+a.btn{text-decoration:none;display:inline-block}
+
+.editbox{margin-top:12px;border-top:1px solid var(--line);padding-top:12px;
+  display:flex;flex-direction:column;gap:10px}
+.editbox label{display:flex;flex-direction:column;gap:5px;font-size:12px;color:var(--mut)}
+.editbox input,.editbox textarea{font:inherit;font-size:13.5px;color:var(--ink);
+  background:var(--bg);border:1px solid var(--line2);border-radius:7px;padding:9px 11px}
+.editbox textarea{resize:vertical}
+.editactions{display:flex;align-items:center;gap:12px}
+
+/* --- v3: даты и группы --- */
+.qgroup{margin-bottom:18px}
+.qgroup-h{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--mut);
+  margin:2px 0 9px;display:flex;gap:8px;align-items:baseline}
+.qgroup .ccard{margin-bottom:10px}
+.datechip{color:var(--ink2)}
+.datechip.today{border-color:var(--hot);color:var(--hot)}
+.datechip.overdue{border-color:var(--warn);color:var(--warn)}
+.hookchip{color:var(--acc);border-color:rgba(110,168,216,.4)}
+.editrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:560px){.editrow{grid-template-columns:1fr}}
+
+/* --- v4: табы и двухколоночная раскладка --- */
+.tabs{display:flex;gap:6px;margin-left:auto;margin-right:18px;background:var(--panel2);
+  border:1px solid var(--line2);border-radius:9px;padding:4px}
+.tab{font:inherit;font-size:13.5px;font-weight:600;color:var(--ink2);background:transparent;
+  border:0;border-radius:6px;padding:7px 16px;cursor:pointer;transition:background .15s,color .15s}
+.tab:hover{color:var(--ink)}
+.tab.active{background:var(--hot);color:#fff}
+.top-right{margin-left:0}
+@media(max-width:640px){.tabs{margin-right:8px}.tab{padding:6px 11px;font-size:12.5px}}
+
+.layout{max-width:1420px;margin:0 auto;padding:20px 22px 80px;
+  display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:18px;align-items:start}
+@media(max-width:1020px){.layout{grid-template-columns:1fr}}
+.col-work,.col-stats{display:flex;flex-direction:column;gap:18px;min-width:0}
+.col-stats .tiles{grid-template-columns:repeat(2,1fr)}
+.col-stats .charts{grid-template-columns:1fr}
+.col-stats .product{padding:16px}
+.col-stats h3{font-size:14px}
+
+.today-panel{border-color:rgba(228,87,46,.45)}
+.today-panel .phead h2::before{content:"● ";color:var(--hot);font-size:12px;vertical-align:2px}
+#today-list .ccard{border-color:rgba(228,87,46,.3)}
+.ccard.compact{grid-template-columns:150px 1fr}
+.ccard.compact .cmedia video,.ccard.compact .cmedia img{max-height:200px}
+
+/* --- v5: текстовые посты без файла --- */
+.nofile{flex-direction:column;gap:4px;display:flex;align-items:center;justify-content:center;
+  text-align:center;line-height:1.4}
+.nofile span{font-size:11px;color:var(--mut);white-space:pre-line;opacity:.8}
+.nofile.textpost{border-style:solid;border-color:var(--line2);color:var(--ink2);background:rgba(110,168,216,.05)}
+.nofile.making{color:var(--warn);border-color:rgba(217,161,63,.35)}
+
+/* --- v5: чек-лист запуска --- */
+.tasks-panel{border-color:rgba(110,168,216,.35)}
+#tasks-list{display:flex;flex-direction:column;gap:8px}
+.task{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:10px 13px}
+.task-head{display:flex;align-items:center;gap:10px}
+.task-check input{width:17px;height:17px;accent-color:var(--ok);cursor:pointer}
+.task-title{font:inherit;font-size:14px;font-weight:600;color:var(--ink);background:none;
+  border:0;padding:0;cursor:pointer;text-align:left;flex:1}
+.task.done .task-title{color:var(--mut);text-decoration:line-through;font-weight:400}
+.task-arrow{color:var(--mut);font-size:12px}
+.task-body{margin-top:10px;border-top:1px solid var(--line);padding-top:10px;
+  display:flex;flex-direction:column;gap:10px}
+.task-steps{margin:0;padding-left:20px;color:var(--ink2);font-size:13px}
+.task-steps li{margin-bottom:5px}
+.task-text{background:var(--bg);border:1px solid var(--line2);border-radius:8px;padding:10px 12px}
+.task-text-h{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  font-size:12px;color:var(--acc);margin-bottom:6px}
+.task-text pre{margin:0;font:12.5px/1.5 inherit;white-space:pre-wrap;color:var(--ink2);
+  font-family:inherit}
+
+/* автопостинг: причина, по которой пост не ушёл, и чекбокс в форме правки */
+.cerr{
+  margin:6px 0 2px; padding:6px 9px; border-radius:8px; font-size:12.5px;
+  background:rgba(224,104,92,.12); color:var(--bad); border:1px solid rgba(224,104,92,.25);
+}
+.chkline{display:flex; align-items:center; gap:8px; font-weight:500}
+.chkline input{width:auto; margin:0}

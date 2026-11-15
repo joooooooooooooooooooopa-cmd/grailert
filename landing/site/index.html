@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grailert — be first on the Vinted listing</title>
+<meta name="description" content="Instant alerts for new Vinted listings in 12 countries. Checks every 30 seconds, sends photos, price, size and a direct link — without ever touching your Vinted account.">
+<link rel="canonical" href="https://grailert.example/">
+<meta name="theme-color" content="#FBFAF7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F0F11" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grailert">
+<meta property="og:title" content="Grailert — be first on the Vinted listing">
+<meta property="og:description" content="Alerts the second a matching item goes live. No login, no auto-buying, no risk to your account.">
+<meta property="og:url" content="https://grailert.example/">
+<meta property="og:image" content="https://grailert.example/assets/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Instrument+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/styles.css?v=42eee9f6">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Grailert",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Telegram",
+  "description": "Instant alerts for new Vinted listings. Reads public listings only — never logs into your account.",
+  "offers": [
+    { "@type": "Offer", "name": "Free", "price": "0", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Basic", "price": "9.99", "priceCurrency": "USD" },
+    { "@type": "Offer", "name": "Pro", "price": "19.99", "priceCurrency": "USD" }
+  ]
+}
+</script>
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="/">
+      <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true">
+        <path d="M3.4 4h15.2v7.6L11 18.6 3.4 11.6V4Z"
+              fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+        <circle cx="11" cy="10" r="2.6" fill="none" stroke="#DB3A1B" stroke-width="1.6"/>
+      </svg>
+      Grailert
+    </a>
+
+    <nav class="nav">
+      <a href="#how" data-i18n="nav_how">How it works</a>
+      <a href="#panel" data-i18n="panel_eyebrow">Inside Telegram</a>
+      <a href="#safety" data-i18n="nav_safe">Account safety</a>
+      <a href="#pricing" data-i18n="nav_pricing">Pricing</a>
+      <a href="/faq" data-i18n="nav_faq">FAQ</a>
+    </nav>
+
+    <div class="top-actions">
+      <div class="lang">
+        <button class="lang-btn" id="langBtn" aria-haspopup="true" aria-expanded="false">
+          <span id="langLabel">EN</span>
+        </button>
+        <div class="lang-menu" id="langMenu" hidden></div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="https://telegram.example/grailert_bot?start=site_top"
+         data-i18n="cta_top">Open in Telegram</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ---------------------------------------------------------------- герой -->
+<section class="first">
+  <div class="wrap hero">
+    <div>
+      <span class="eyebrow" data-i18n="hero_eyebrow">Sourcing alerts for Vinted</span>
+      <h1><span data-i18n="hero_h1a">Be first on the</span> <em data-i18n="hero_h1em">listing.</em></h1>
+      <p class="hero-sub" data-i18n="hero_sub">
+        Grailert watches Vinted and messages you the second a match goes live. The good pieces
+        are gone in minutes — you'll be there in seconds.
+      </p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://telegram.example/grailert_bot?start=site_hero" data-i18n="cta_main">
+          Start free in Telegram
+        </a>
+        <a class="btn btn-ghost" href="#how" data-i18n="cta_second">See how it works</a>
+      </div>
+      <p class="hero-note">
+        <b data-i18n="hero_note_a">1 search free forever</b> ·
+        <span data-i18n="hero_note_b">7-day Pro trial</span> ·
+        <span data-i18n="hero_note_c">no card needed</span>
+      </p>
+    </div>
+
+    <div class="feed" aria-hidden="true">
+      <div class="feed-bar">
+        <span class="dot live"></span>
+        <span class="t" data-i18n="feed_title">live · what an alert looks like</span>
+      </div>
+      <div class="feed-body" id="feed"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------ как это -->
+<section class="soft" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="how_eyebrow">Three steps</span>
+      <h2 data-i18n="how_h2">Set it once, hunt while you sleep</h2>
+      <p data-i18n="how_p">No extension to install, no account to connect. Everything happens in a Telegram chat.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="n">01</div>
+        <h3 data-i18n="s1_h">Tell it what you hunt</h3>
+        <p data-i18n="s1_p" data-i18n-html>Send a keyword like <code>stone island</code>, or paste a filtered Vinted link.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3 data-i18n="s2_h">Pick how often to check</h3>
+        <p data-i18n="s2_p" data-i18n-html>From every 15 minutes down to every 30 seconds.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3 data-i18n="s3_h">Get the alert, take the deal</h3>
+        <p data-i18n="s3_p" data-i18n-html>Photo album, price, size, brand and a direct link land in your chat.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------- пульт -->
+<section id="panel">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="panel_eyebrow">Inside Telegram</span>
+      <h2 data-i18n="panel_h2">A control panel, not a chat you have to fight</h2>
+      <p data-i18n="panel_p">Everything lives in one screen inside Telegram: your searches, what is on sale right now, your plan. No website to log into, no app to install.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <h3 data-i18n="panel_1h">Your searches at a glance</h3>
+        <p data-i18n="panel_1p">Pause, resume, edit filters or run a check right now — one tap each.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="panel_2h">A live feed</h3>
+        <p data-i18n="panel_2p">See what is on sale for any of your searches this second, with photos and prices.</p>
+      </div>
+      <div class="step">
+        <h3 data-i18n="panel_3h">Upgrade without leaving</h3>
+        <p data-i18n="panel_3p">Pay with Telegram Stars or crypto inside the panel. No card, no redirect.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------- безопасность -->
+<section id="safety">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="safe_eyebrow">The part nobody else will tell you</span>
+      <h2 data-i18n="safe_h2">Your Vinted account stays yours</h2>
+      <p data-i18n="safe_p">
+        Vinted has declared war on third-party tools, and the bans land on people who automate
+        actions on their own account.
+      </p>
+    </div>
+
+    <div class="compare">
+      <div class="col them">
+        <h3 data-i18n="them_h">Tools that risk your account</h3>
+        <ul>
+          <li><span class="mark">✕</span><span data-i18n="them_1">Log in as you</span></li>
+          <li><span class="mark">✕</span><span data-i18n="them_2">Auto-buy from your account</span></li>
+          <li><span class="mark">✕</span><span data-i18n="them_3">Re-list your items on a schedule</span></li>
+          <li><span class="mark">✕</span><span data-i18n="them_4">Every action is traceable to you</span></li>
+        </ul>
+      </div>
+      <div class="col us">
+        <h3 data-i18n="us_h">What Grailert does</h3>
+        <ul>
+          <li><span class="mark">✓</span><span data-i18n="us_1">Reads public listings only</span></li>
+          <li><span class="mark">✓</span><span data-i18n="us_2">Never asks for your password</span></li>
+          <li><span class="mark">✓</span><span data-i18n="us_3">Buys nothing, posts nothing</span></li>
+          <li><span class="mark">✓</span><span data-i18n="us_4">Touches only your Telegram chat</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="factbar">
+      <div class="fact">
+        <div class="v mono" data-i18n="f1_v">+340%</div>
+        <div class="k" data-i18n="f1_k">growth in bans for automation during the February 2026 wave</div>
+      </div>
+      <div class="fact">
+        <div class="v mono" data-i18n="f2_v">0</div>
+        <div class="k" data-i18n="f2_k">actions Grailert takes on your Vinted account</div>
+      </div>
+      <div class="fact">
+        <div class="v mono" data-i18n="f3_v">30 sec</div>
+        <div class="k" data-i18n="f3_k">fastest check — the interval that decides who gets there first</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------- тарифы -->
+<section class="soft" id="pricing">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow" data-i18n="price_eyebrow">Pricing</span>
+      <h2 data-i18n="price_h2">You're paying for seconds</h2>
+      <p data-i18n="price_p">Not for a number of searches — for how early you see the listing.</p>
+    </div>
+
+    <div class="plans">
+      <div class="plan">
+        <div class="pname" data-i18n="p_free">Free</div>
+        <div>
+          <div class="interval mono">15 min</div>
+          <div class="interval-k" data-i18n="int_k">between checks</div>
+        </div>
+        <div class="price"><b>$0</b></div>
+        <ul>
+          <li><span class="mark">✓</span><span data-i18n="free_1">1 search</span></li>
+          <li><span class="mark">✓</span><span data-i18n="free_2">Full alerts with photos</span></li>
+          <li><span class="mark">✓</span><span data-i18n="free_3">Free forever</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="https://telegram.example/grailert_bot?start=site_free" data-i18n="cta_plan">Start in Telegram</a>
+      </div>
+
+      <div class="plan featured" data-badge="most popular" data-i18n-attr="data-badge:p_badge">
+        <div class="pname" data-i18n="p_basic">Basic</div>
+        <div>
+          <div class="interval mono">2 min</div>
+          <div class="interval-k" data-i18n="int_k">between checks</div>
+        </div>
+        <div class="price"><b>$9.99</b> / 500 ⭐</div>
+        <ul>
+          <li><span class="mark">✓</span><span data-i18n="basic_1">3 searches</span></li>
+          <li><span class="mark">✓</span><span data-i18n="basic_2">Include and exclude word filters</span></li>
+          <li><span class="mark">✓</span><span data-i18n="basic_3">Price snapshot per search</span></li>
+        </ul>
+        <a class="btn btn-primary" href="https://telegram.example/grailert_bot?start=site_basic" data-i18n="cta_plan">Start in Telegram</a>
+      </div>
+
+      <div class="plan">
+        <div class="pname" data-i18n="p_pro">Pro</div>
+        <div>
+          <div class="interval mono">30 sec</div>
+          <div class="interval-k" data-i18n="int_k">between checks</div>
+        </div>
+        <div class="price"><b>$19.99</b> / 999 ⭐ · <b>$199</b> <span data-i18n="per_year">/ year</span></div>
+        <ul>
+          <li><span class="mark">✓</span><span data-i18n="pro_1">Unlimited searches</span></li>
+          <li><span class="mark">✓</span><span data-i18n="pro_2">Priority in the queue</span></li>
+          <li><span class="mark">✓</span><span data-i18n="pro_3">12 months for the price of 10</span></li>
+        </ul>
+        <a class="btn btn-ghost" href="https://telegram.example/grailert_bot?start=site_pro" data-i18n="cta_plan">Start in Telegram</a>
+      </div>
+    </div>
+
+    <p class="pay-note">
+      <span class="mono" style="color:var(--hot)">₿</span>
+      <span data-i18n="pay_note">Pay with Telegram Stars or crypto through Crypto Pay.</span>
+    </p>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------- языки -->
+<section id="languages">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="langs_h2">Speaks your language</h2>
+      <p data-i18n="langs_p">The bot, the alerts and the payment screens are all localised.</p>
+    </div>
+    <div class="langs">
+      <span>🇬🇧 English</span><span>🇫🇷 Français</span><span>🇩🇪 Deutsch</span>
+      <span>🇪🇸 Español</span><span>🇮🇹 Italiano</span><span>🇵🇱 Polski</span><span>🇷🇺 Русский</span>
+    </div>
+  </div>
+</section>
+
+<!-- --------------------------------------------------------------- FAQ -->
+<section class="soft" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 data-i18n="faq_h2">Questions people actually ask</h2>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary data-i18n="q1">Can this get my Vinted account banned?</summary>
+        <div class="answer" data-i18n="a1">Nothing we do is attached to your account.</div>
+      </details>
+      <details>
+        <summary data-i18n="q2">Do you need my Vinted password?</summary>
+        <div class="answer" data-i18n="a2">No.</div>
+      </details>
+      <details>
+        <summary data-i18n="q3">Which countries does it cover?</summary>
+        <div class="answer" data-i18n="a3">Twelve.</div>
+      </details>
+      <details>
+        <summary data-i18n="q4">How fast is it really?</summary>
+        <div class="answer" data-i18n="a4">Every 30 seconds on Pro.</div>
+      </details>
+      <details>
+        <summary data-i18n="q5">How do I pay, and can I stop?</summary>
+        <div class="answer" data-i18n="a5">Telegram Stars or crypto.</div>
+      </details>
+      <details>
+        <summary data-i18n="q6">What happens when my trial ends?</summary>
+        <div class="answer" data-i18n="a6">You drop to Free.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ------------------------------------------------------------- финал -->
+<section class="final">
+  <div class="wrap">
+    <h2 data-i18n="final_h2">The next good listing goes live in a minute</h2>
+    <p data-i18n="final_p">Be the one who sees it.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="https://telegram.example/grailert_bot?start=site_final" data-i18n="cta_main">
+        Start free in Telegram
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <a class="brand foot-brand" href="/">
+        <svg width="20" height="20" viewBox="0 0 22 22" aria-hidden="true">
+          <path d="M3.4 4h15.2v7.6L11 18.6 3.4 11.6V4Z"
+                fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+          <circle cx="11" cy="10" r="2.6" fill="none" stroke="#DB3A1B" stroke-width="1.6"/>
+        </svg>
+        Grailert
+      </a>
+      <p class="foot-note" data-i18n="foot_note">
+        Grailert is an independent tool. Not affiliated with, endorsed by, or connected to Vinted.
+      </p>
+    </div>
+    <div class="foot-links">
+      <a href="/faq" data-i18n="foot_faq">FAQ</a>
+      <a href="#safety" data-i18n="foot_safety">Account safety</a>
+      <a href="/terms" data-i18n="foot_terms">Terms</a>
+      <a href="/privacy" data-i18n="foot_privacy">Privacy</a>
+      <a href="https://telegram.example/grailert_bot?start=site_footer">Telegram</a>
+      <a href="https://telegram.example/support" data-i18n="foot_support">Support</a>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/i18n.js?v=a27e72b3"></script>
+<script src="/assets/app.js?v=2897aba5"></script>
+</body>
+</html>

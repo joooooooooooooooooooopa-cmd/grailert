@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Пульт контента</title>
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="stylesheet" href="/ui.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">Пульт <span>контента</span></div>
+  <nav class="tabs" id="tabs">
+    <button class="tab" data-tab="grailert">Grailert</button>
+    <button class="tab" data-tab="acme">Acme</button>
+  </nav>
+  <div class="top-right">
+    <button id="refresh" class="btn">Обновить</button>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- ЛЕВАЯ КОЛОНКА: что делать -->
+  <div class="col-work">
+
+    <section class="product tasks-panel">
+      <div class="phead"><h2>Чек-лист запуска</h2>
+        <span class="muted" id="tasks-count"></span></div>
+      <div id="tasks-list"></div>
+    </section>
+
+    <section class="product today-panel">
+      <div class="phead"><h2>Сегодня к выпуску</h2>
+        <span class="muted" id="today-count"></span></div>
+      <div id="today-list"></div>
+    </section>
+
+    <section class="product">
+      <div class="phead"><h2>Очередь</h2>
+        <span class="muted" id="queue-summary"></span></div>
+      <form id="addform" class="addform">
+        <select name="platform">
+          <option value="reels">Reels</option>
+          <option value="tiktok">TikTok</option>
+          <option value="tg">Telegram</option>
+          <option value="fb">Facebook</option>
+          <option value="reddit">Reddit</option>
+        </select>
+        <input name="title" placeholder="Название ролика или поста" required>
+        <button class="btn hot">Добавить</button>
+      </form>
+      <div id="queue-list"></div>
+    </section>
+
+  </div>
+
+  <!-- ПРАВАЯ КОЛОНКА: цифры -->
+  <div class="col-stats">
+
+    <section class="product">
+      <div class="phead"><h2 id="stats-title">Статистика</h2></div>
+      <div class="tiles" id="tiles"></div>
+      <div class="charts" id="charts"></div>
+    </section>
+
+    <section class="product">
+      <div class="phead"><h3 id="sources-title">Каналы привлечения</h3></div>
+      <table class="tbl" id="src"><thead>
+        <tr><th>Канал</th><th>Пришло</th><th>Платят</th><th>Деньги</th></tr>
+      </thead><tbody></tbody></table>
+    </section>
+
+    <section class="product" id="media-panel">
+      <div class="phead"><h3>Посты Instagram</h3></div>
+      <table class="tbl" id="media"><thead>
+        <tr><th>Пост</th><th>👁</th><th>❤</th><th>💬</th></tr>
+      </thead><tbody></tbody></table>
+      <p class="empty" id="media-empty" hidden>Появятся после подключения Instagram</p>
+    </section>
+
+    <section class="product">
+      <div class="phead"><h3>Источники данных</h3></div>
+      <div class="pulls" id="pulls"></div>
+      <p class="muted small" style="margin-top:10px">«Не подключён» — это ожидание настройки
+      аккаунтов, а не поломка. <span id="updated"></span></p>
+    </section>
+
+  </div>
+
+</main>
+
+<script src="/ui.js"></script>
+</body>
+</html>
